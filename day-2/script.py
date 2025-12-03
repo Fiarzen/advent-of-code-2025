@@ -1,14 +1,15 @@
-def find_invalid_ids_in_range(range_str):
+def find_subtotal_invalid_ids_in_range(range_str):
     start_str, end_str = range_str.split("-")
     start, end = int(start_str), int(end_str)
+    subtotal = 0
     for i in range(start, end + 1):
         number_str = str(i)
         length = len(number_str)
         if length % 2 == 1:
-            return 0
+            continue
         if number_str[:length // 2] == number_str[length // 2:]:
-            return i
-    return 0
+            subtotal += i
+    return subtotal
 
 def add_all_invalid_ids(input_file):   
     with open(input_file, "r") as file:
@@ -18,8 +19,8 @@ def add_all_invalid_ids(input_file):
     for range in ranges:
         print(range)
         print(type(range))
-        print(find_invalid_ids_in_range(range))
-        sum_of_invalid_ids += find_invalid_ids_in_range(range)
+        print(find_subtotal_invalid_ids_in_range(range))
+        sum_of_invalid_ids += find_subtotal_invalid_ids_in_range(range)
         print(sum_of_invalid_ids)
     return sum_of_invalid_ids
 
