@@ -17,11 +17,7 @@ def add_all_invalid_ids(input_file):
     ranges = line.split(",")
     sum_of_invalid_ids = 0
     for range in ranges:
-        print(range)
-        print(type(range))
-        print(find_subtotal_invalid_ids_in_range(range))
         sum_of_invalid_ids += find_subtotal_invalid_ids_in_range(range)
-        print(sum_of_invalid_ids)
     return sum_of_invalid_ids
 
 def main():
